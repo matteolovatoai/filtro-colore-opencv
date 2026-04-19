@@ -14,7 +14,7 @@ else:
     image_gray_3c = cv2.cvtColor(image_gray, cv2.COLOR_GRAY2BGR)
     # il rosso è sia all'inizio che alla fine dello spettro hsv quindi devo fare 2 maschere
     # creo i limiti inferiore e superiore per il rosso-arancio
-    limit_inf_1 = np.array([0, 100, 100])
+    limit_inf_1 = np.array([0, 150, 150])
     limit_sup_1 = np.array([10, 255, 255])
     # creo i limiti per il rosso-viola
     limit_inf_2 = np.array([160, 100, 100])
@@ -25,3 +25,9 @@ else:
 
     # unisco le maschere
     mask = cv2.bitwise_or(mask_1, mask_2)
+    # creo un "pennello" per passare i bordi
+    kernel_cleaning = np.ones((5,5))
+    # faccio l'apertura, prima erodo i bordi per mangiare i pixel solitari e poi dilato per tornare alla maschera iniziale, ma pulita
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_cleaning)
+    # creo la maschera inversa per prendere tutto quello che non è rosso
+    mask_inv = cv2.bitwise_not(mask)
