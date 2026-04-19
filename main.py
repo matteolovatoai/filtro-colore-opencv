@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 
-image = cv2.imread("mela.jpg")
+image_name = "mela"
+
+image = cv2.imread(f"{image_name}.jpg")
 
 if image is None:
     print("❌ Errore nella lettura dell'immagine")
