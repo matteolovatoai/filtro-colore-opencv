@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-image_name = "mela"
+image_name = "mela" # l'immagine si chiama mela.jpg
 
 image = cv2.imread(f"{image_name}.jpg")
 
@@ -37,13 +37,13 @@ else:
 
     # creo la maschera inversa per prendere tutto quello che non è rosso
     mask_inv = cv2.bitwise_not(mask)
-
-    image_hsv_mask = cv2.bitwise_and(image, image, mask=mask)
-    cv2.imwrite(f"masked_{image_name}.jpg", image_hsv_mask)
-
+    # trovo il colore rosso e lo ritaglio
+    image_color_mask = cv2.bitwise_and(image, image, mask=mask)
+    cv2.imwrite(f"masked_{image_name}.jpg", image_color_mask)
+    # ritaglio tutto quello che non è rosso dall'immagine in grigio
     image_gray_mask = cv2.bitwise_and(image_gray_3c, image_gray_3c, mask=mask_inv)
     cv2.imwrite(f"masked_{image_name}_gray.jpg", image_gray_mask)
-
-    image_result = cv2.add(image_hsv_mask, image_gray_mask)
+    # sommo le 2 immagini per ottenere il risultato
+    image_result = cv2.add(image_color_mask, image_gray_mask)
 
     cv2.imwrite(f"result_{image_name}.jpg", image_result)
