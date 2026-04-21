@@ -16,15 +16,16 @@ else:
     image_gray_3c = cv2.cvtColor(image_gray, cv2.COLOR_GRAY2BGR)
     # il rosso è sia all'inizio che alla fine dello spettro hsv quindi devo fare 2 maschere
     # creo i limiti inferiore e superiore per il rosso-arancio
-    limit_inf_1 = np.array([0, 80, 80])
-    limit_sup_1 = np.array([6, 255, 255])
+    limit_inf_1 = np.array([0, 80, 70])
+    limit_sup_1 = np.array([5, 255, 255])
     # creo i limiti per il rosso-viola
-    limit_inf_2 = np.array([160, 100, 0])
+    limit_inf_2 = np.array([170, 100, 0])
     limit_sup_2 = np.array([180, 255, 255])
     # creo le 2 maschere
     mask_1 = cv2.inRange(image_hsv, limit_inf_1, limit_sup_1)
+    cv2.imwrite("mask_1.jpg", mask_1)
     mask_2 = cv2.inRange(image_hsv, limit_inf_2, limit_sup_2)
-
+    cv2.imwrite("mask_2.jpg", mask_2)
     # unisco le maschere
     mask = cv2.bitwise_or(mask_1, mask_2)
     # creo un "pennello" per passare i bordi
@@ -34,7 +35,7 @@ else:
     kernel_closing = np.ones((100,100))
     # faccio il contrario per unire oggetti divisi
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel_closing)
-
+    cv2.imwrite("maschera.jpg", mask)
     # creo la maschera inversa per prendere tutto quello che non è rosso
     mask_inv = cv2.bitwise_not(mask)
     # trovo il colore rosso e lo ritaglio
@@ -45,5 +46,14 @@ else:
     cv2.imwrite(f"masked_{image_name}_gray.jpg", image_gray_mask)
     # sommo le 2 immagini per ottenere il risultato
     image_result = cv2.add(image_color_mask, image_gray_mask)
-
     cv2.imwrite(f"result_{image_name}.jpg", image_result)
+
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if len(contours) > 0:
+        # prendo solo un contorno, il più grande
+        biggest_contour = max(contours, key=cv2.contourArea)
+        # ricavo i dati del box
+        x, y, w, h = cv2.boundingRect(biggest_contour)
+        cv2.rectangle(image, (x, y), (x+w, y+h), (0,255,0), 5)
+        cv2.putText(image, "Mela", (x, y-15), 2, 4, (0,255,0), 5)
+        cv2.imwrite(f"box_{image_name}.jpg", image)
