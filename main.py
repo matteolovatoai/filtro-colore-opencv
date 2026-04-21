@@ -16,11 +16,11 @@ else:
     image_gray_3c = cv2.cvtColor(image_gray, cv2.COLOR_GRAY2BGR)
     # il rosso è sia all'inizio che alla fine dello spettro hsv quindi devo fare 2 maschere
     # creo i limiti inferiore e superiore per il rosso-arancio
-    limit_inf_1 = np.array([0, 150, 150])
+    limit_inf_1 = np.array([0, 80, 80])
     limit_sup_1 = np.array([6, 255, 255])
     # creo i limiti per il rosso-viola
     limit_inf_2 = np.array([160, 100, 0])
-    limit_sup_2 = np.array([179, 255, 255])
+    limit_sup_2 = np.array([180, 255, 255])
     # creo le 2 maschere
     mask_1 = cv2.inRange(image_hsv, limit_inf_1, limit_sup_1)
     mask_2 = cv2.inRange(image_hsv, limit_inf_2, limit_sup_2)
