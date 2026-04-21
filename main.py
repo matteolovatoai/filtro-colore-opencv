@@ -55,5 +55,6 @@ else:
         # ricavo i dati del box
         x, y, w, h = cv2.boundingRect(biggest_contour)
         cv2.rectangle(image, (x, y), (x+w, y+h), (0,255,0), 5)
-        cv2.putText(image, "Mela", (x, y-15), 2, 4, (0,255,0), 5)
+        # metto il testo 15 pixel piu in alto per sono appiccicarlo al box
+        cv2.putText(image, image_name.title(), (x, y-15), 2, 4, (0,255,0), 5)
         cv2.imwrite(f"box_{image_name}.jpg", image)
