@@ -8,11 +8,11 @@ Le immagini utilizzate sono prese da pexels.com
 Foto di Hatice Noğman da Pexels: [mela.jpg](https://www.pexels.com/it-it/foto/cibo-sgabello-apple-mela-14833259/)
 
 Immagini originale
-<img width="3176" height="4765" alt="mela" src="https://github.com/user-attachments/assets/5a266693-6dc3-4200-8625-468f8cf5f1d0" />
+<img width="480" height="640" alt="mela" src="https://github.com/user-attachments/assets/5a266693-6dc3-4200-8625-468f8cf5f1d0" />
 maschera 1
-<img width="3176" height="4765" alt="mask_1" src="https://github.com/user-attachments/assets/e51fdb16-1448-4eb5-bced-1fb17524fb22" />
+<img width="480" height="640" alt="mask_1" src="https://github.com/user-attachments/assets/e51fdb16-1448-4eb5-bced-1fb17524fb22" />
 maschera 2
-<img width="3176" height="4765" alt="mask_2" src="https://github.com/user-attachments/assets/2879072d-8926-44c0-b610-412cc671058c" />
+<img width="480" height="640" alt="mask_2" src="https://github.com/user-attachments/assets/2879072d-8926-44c0-b610-412cc671058c" />
 maschera totale
 <img width="3176" height="4765" alt="maschera" src="https://github.com/user-attachments/assets/ff6b57ad-872e-4665-a3ae-b3d33ebee1bf" />
 maschera applicata all'immagine a colori
