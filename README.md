@@ -22,5 +22,5 @@ Inverto la maschera e la applico all'immagine con lo spazio colori su scala di g
 <img width="480" height="640" alt="masked_mela_gray" src="https://github.com/user-attachments/assets/b3273fc1-9a2d-457f-a718-652d58584fba" />
 Unisco le due immagini per ottenere il filtro, resta solo il rosso ed il resto compare in bianco e nero
 <img width="480" height="640" alt="result_mela" src="https://github.com/user-attachments/assets/0725f686-d63a-45b7-96bf-5a61cc338acc" />
-Dalla maschera ottengo le informazioni dei contorni, calcolo il contorno più grande e recupero le informazioni (x, y, w, h) del boundingRect, il rettangolo dritto più piccolo che contiene il contorno rilevato, uso le stesse informazioni per scrivere la laberl
+Dalla maschera ottengo le informazioni dei contorni, calcolo il contorno più grande e recupero le informazioni (x, y, w, h) del boundingRect, il rettangolo dritto più piccolo che contiene il contorno rilevato, uso le stesse informazioni per scrivere la label
 <img width="480" height="640" alt="box_mela" src="https://github.com/user-attachments/assets/0984c936-7bae-45fb-a302-808d32226c0f" />
